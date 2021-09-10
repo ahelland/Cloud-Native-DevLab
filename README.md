@@ -18,8 +18,11 @@ A few notes on this guide:
 The structure of this guide is as follows:  
 
 ### Sections:  
-01_Bootstrap  
+_01_Bootstrap_  
 We install the necessary tooling and install a management and a workload cluster.
+
+_02_Monitoring_  
+We install Prometheus, Grafana and Jaeger. Loadbalancers for all three are also created (if you want), but not DNS names.
 
 ## Q & A
 Q: Why not Docker Desktop, minikube, or a number of other distros?  
@@ -31,7 +34,9 @@ A: Once again - a choice. If you already have access to the necessary hardware t
 Q: What do I need to run this specs-wise?  
 A: I have tested this on a single node HPE Proliant Microserver Gen10 Plus with 32 GB RAM and 1TB NVMe SSD running Windows Server 2022 RTM. You don't want less than 32 GB RAM.
 
-I have also tested on a dual-node Azure Stack HCI cluster (Microservers with 64 GB RAM each). Do note that if you want to use Storage Spaces Direct (S2D) you will want 1 NVMe drive and 4 SSDs in each node at a minimum.
+I have also tested on a dual-node Azure Stack HCI cluster (Microservers with 64 GB RAM each). Do note that if you want to use Storage Spaces Direct (S2D) you will want 1 NVMe drive and 4 SSDs in each node at a minimum for a bare-metal installation.
+
+It is possible to run everything in Virtual Machines if your hardware supports nested virtualization.
 
 Q: Can I expose the cluster on the internet?  
 A: Depends on your ISP. The defaults here will set you up with a fully private cluster, but if you have a NIC connected to a WAN and provide static IPs you should be good to go. Reverse proxies and firewalls should also work, but I have not verified this.
