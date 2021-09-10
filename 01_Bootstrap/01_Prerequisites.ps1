@@ -12,7 +12,7 @@ Set-Location $installPath
 # Note if you want it to apply for all users change "User" to "Machine". Machine requires a reboot to persist.
 $envPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 [System.Environment]::SetEnvironmentVariable("PATH", $envPath + ";" + $toolsPath, "User")
-[System.Environment]::SetEnvironmentVariable("PATH", $envPath + ";" + $toolsPath + "\bin", "User")
+[System.Environment]::SetEnvironmentVariable("PATH", $envPath + ";" + $gitPath + "\bin", "User")
 
 # Install Azure Cli
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
