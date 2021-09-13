@@ -14,6 +14,7 @@ A few notes on this guide:
 * The bootstrap section is what I consider the bare minimum to get things running. Other sections are optional, and can be adapted to your liking. Don't need it? Don't use it.
 * The guide / scripts will include explanations where needed, but MS Docs is currently where you need to go for more detailed instructions and architectural guidance.
 * I try to ensure accuracy, but this is a fast moving target. A PowerShell cmdlet might change, a component gets a version bump, etc. If you find errors submit a PR (if you know the fix), or an issue and I'll take a look at it.
+* The design goal of these instructions leans towards tearing down and rebuild the cluster; not enabling easy upgradeability. (There are no blockers for such, but not a responsibility of the guide that it will work flawlessly.)
 
 The structure of this guide is as follows:  
 
@@ -23,6 +24,9 @@ We install the necessary tooling and install a management and a workload cluster
 
 _02_Monitoring_  
 We install Prometheus, Grafana and Jaeger. Loadbalancers for all three are also created (if you want), but not DNS names.
+
+_03_Azure_Policy_
+We create a service principal (with a "Policy Writer" role) and use this to enable Azure Policy in our cluster.
 
 ## Q & A
 Q: Why not Docker Desktop, minikube, or a number of other distros?  
