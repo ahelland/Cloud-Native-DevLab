@@ -25,8 +25,11 @@ We install the necessary tooling and install a management and a workload cluster
 _02_Monitoring_  
 We install Prometheus, Grafana and Jaeger. Loadbalancers for all three are also created (if you want), but not DNS names.
 
-_03_Azure_Policy_
+_03_Azure_Policy_  
 We create a service principal (with a "Policy Writer" role) and use this to enable Azure Policy in our cluster.
+
+_04_ExternalAccess_  
+We install Nginx and CertManager, and configure integration with Azure DNS. This enables you to have Kubernetes take care of configuring DNS for you and enroll a certificate from Let's Encrypt when you deploy an application to the cluster.
 
 ## Q & A
 Q: Why not Docker Desktop, minikube, or a number of other distros?  
