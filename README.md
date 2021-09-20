@@ -31,6 +31,9 @@ We create a service principal (with a "Policy Writer" role) and use this to enab
 _04_ExternalAccess_  
 We install Nginx and CertManager, and configure integration with Azure DNS. This enables you to have Kubernetes take care of configuring DNS for you and enroll a certificate from Let's Encrypt when you deploy an application to the cluster.
 
+_05_MonitoringIngress_
+This section provides configuration files for enabling ingress for Prometheus and Jaeger.
+
 ## Q & A
 Q: Why not Docker Desktop, minikube, or a number of other distros?  
 A: The choice of AKS is an opinionated one with the thinking behind it being that you want your production workloads to end up in an Azure Kubernetes Service cluster.
