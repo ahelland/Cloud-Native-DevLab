@@ -40,7 +40,7 @@ git clone https://github.com/ahelland/Cloud-Native-DevLab.git
 # Close all PowerShell windows and reopen a new administrative session to check if you have the latest version of the PowerShell module.
 exit
 
-# Current version is 1.1.4 (August 2021 Release)
+# Current version is 1.1.11 (September 2021 Release)
 Get-Command -Module AksHci
 
 # Log in to Azure 
