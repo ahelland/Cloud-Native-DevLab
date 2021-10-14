@@ -6,7 +6,7 @@ You need to have a Windows Server installed (Server 2022 or Azure Stack HCI) wit
 ### Usage
 This section installs the basic tools you need to create the cluster. Run through the files in numeric sequence.
 
-The scrips are:
+The scripts are:
 ```  
 01_Prerequisites.ps1 - Downloads  
 02_PS-Modules.ps1    - Installing PowerShell Modules  
