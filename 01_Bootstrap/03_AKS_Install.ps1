@@ -47,6 +47,9 @@ Get-AksHciCredential -name $clusterName
 # Enable Prometheus for monitoring
 Install-AksHciMonitoring -Name $clusterName -storageSizeGB 100 -retentionTimeHours 240
 
+# Enable silent install of az extensions
+az config set extension.use_dynamic_install=yes_without_prompt
+
 # Install Azure Defender for AKS (note that this has a cost of roughly 2$ pr month pr core)
 az k8s-extension create --name microsoft.azuredefender.kubernetes --cluster-type connectedClusters --cluster-name $clusterName --resource-group $azureRGName --extension-type microsoft.azuredefender.kubernetes
 
