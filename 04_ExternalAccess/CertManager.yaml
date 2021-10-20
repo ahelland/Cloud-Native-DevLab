@@ -1,5 +1,5 @@
 # You need to provide the contents for client-secret, email, clientID, subscriptionID, tenantID,
-# resourceGroupNmae (for the DNS zone) and hostedZoneName (domain name).
+# resourceGroupName (for the DNS zone) and hostedZoneName (domain name).
 apiVersion: v1
 kind: Secret
 metadata:

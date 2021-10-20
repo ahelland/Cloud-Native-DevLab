@@ -19,18 +19,18 @@ This is based on Azure Stack HCI AKS:
 
 ### Sections  
 -----------
-- [01_Bootstrap](/01_Bootstrap/README.md "Bootstrap")  
+- [01_Bootstrap](/01_Bootstrap/ "Bootstrap")  
 We install the necessary tooling and install a management and a workload cluster.
-- [02_Monitoring](/02_Monitoring/README.md "Monitoring")  
+- [02_Monitoring](/02_Monitoring/ "Monitoring")  
 We install Prometheus, Grafana and Jaeger. Loadbalancers for all three are also created (if you want), but not DNS names.
 
-- [03_Azure_Policy](/03_Azure_Polciy/README.md "Azure Policy")  
+- [03_Azure_Policy](/03_Azure_Policy/ "Azure Policy")  
 We create a service principal (with a "Policy Writer" role) and use this to enable Azure Policy in our cluster.
 
-- [04_ExternalAccess](/04_ExternalAccess/README.md "External Access")  
+- [04_ExternalAccess](/04_ExternalAccess/ "External Access")  
 We install Nginx and CertManager, and configure integration with Azure DNS. This enables you to have Kubernetes take care of configuring DNS for you and enroll a certificate from Let's Encrypt when you deploy an application to the cluster.
 
-- [05_MonitoringIngress](/05_MonitoringIngress/README.md "Monitoring Ingress")  
+- [05_MonitoringIngress](/05_MonitoringIngress/ "Monitoring Ingress")  
 This section provides configuration files for enabling ingress for Prometheus and Jaeger.
 
 ## Q & A

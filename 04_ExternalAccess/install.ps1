@@ -1,4 +1,4 @@
-# Installs the necessary componets for external access to the cluster.
+# Installs the necessary components for external access to the cluster.
 # Adapt variables to your liking. Defaults provided.
 $subscriptionId = "xxxx-xxx-xxx-xxx-xxxx"
 $azureDNSRGName = "rg-dns"
