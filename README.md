@@ -33,6 +33,9 @@ We install Nginx and CertManager, and configure integration with Azure DNS. This
 - [05_MonitoringIngress](/05_MonitoringIngress/ "Monitoring Ingress")  
 This section provides configuration files for enabling ingress for Prometheus and Jaeger.
 
+- [06_AzureServiceOperator](/06_AzureServiceOperator/ "Azure Service Operator")  
+Brief explanation on Azure Service Operator with links to MS docs.
+
 ## Q & A
 -----------
 Q: Why not Docker Desktop, minikube, or a number of other distros?  
