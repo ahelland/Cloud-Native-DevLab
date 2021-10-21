@@ -21,6 +21,7 @@ This is based on Azure Stack HCI AKS:
 -----------
 - [01_Bootstrap](/01_Bootstrap/ "Bootstrap")  
 We install the necessary tooling and install a management and a workload cluster.
+
 - [02_Monitoring](/02_Monitoring/ "Monitoring")  
 We install Prometheus, Grafana and Jaeger. Loadbalancers for all three are also created (if you want), but not DNS names.
 
@@ -35,6 +36,9 @@ This section provides configuration files for enabling ingress for Prometheus an
 
 - [06_AzureServiceOperator](/06_AzureServiceOperator/ "Azure Service Operator")  
 Brief explanation on Azure Service Operator with links to MS docs.
+
+- [Samples](/Samples/ "Samples")  
+Samples for testing out the basic functionality of the cluster based on the installations in the sections above.
 
 ## Q & A
 -----------

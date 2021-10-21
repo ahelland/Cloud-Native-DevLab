@@ -1,0 +1,127 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hellofoo
+  labels:
+    name: hellofoo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hellofoo
+  name: hellofoo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellofoo-backend
+  template:
+    metadata:
+      namespace: hellofoo
+      labels:
+        app: hellofoo-backend
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: hellofoo-backend
+        image: ahelland/hellofoo-backend:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+          name: back       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: hellofoo
+  name: hellofoo-backend
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: hellofoo-backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hellofoo
+  name: hellofoo-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellofoo-frontend
+  template:
+    metadata:
+      namespace: hellofoo
+      labels:
+        app: hellofoo-frontend
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: hellofoo-frontend
+        image: ahelland/hellofoo-frontend:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: BACK
+          value: "hellofoo-backend"
+        - name: API__api_address
+          value: "http://hellofoo-backend:80/api/values"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: hellofoo
+  name: hellofoo-frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: hellofoo-frontend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hellofoo-ingress
+  namespace: hellofoo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    # Change to the domain you have configured
+    - hellofoo.contoso.com
+    secretName: tls-secret
+  rules:
+  # Change to the domain you have configured
+  - host: hellofoo.contoso.com
+    http:
+      paths:      
+      - backend:
+          service: 
+            name: hellofoo-frontend
+            port: 
+              number: 80
+        path: /
+        pathType: Prefix
