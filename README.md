@@ -37,11 +37,13 @@ This section provides configuration files for enabling ingress for Prometheus an
 - [06_AzureServiceOperator](/06_AzureServiceOperator/ "Azure Service Operator")  
 Brief explanation on Azure Service Operator with links to MS docs.
 
+- [07_Dapr](/07_Dapr/ "Dapr")  
+Explanation of Dapr plus installation commands. Links to more info and samples.
+
 - [Samples](/Samples/ "Samples")  
 Samples for testing out the basic functionality of the cluster based on the installations in the sections above.
 
 ## Q & A
------------
 Q: Why not Docker Desktop, minikube, or a number of other distros?  
 A: The choice of AKS is an opinionated one with the thinking behind it being that you want your production workloads to end up in an Azure Kubernetes Service cluster.
 
