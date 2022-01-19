@@ -40,6 +40,9 @@ Brief explanation on Azure Service Operator with links to MS docs.
 - [07_Dapr](/07_Dapr/ "Dapr")  
 Explanation of Dapr plus installation commands. Links to more info and samples.
 
+- [08_Flux](/08_Flux/ "Flux")  
+Installation of a sample app using a GitOps approach with Flux.
+
 - [Samples](/Samples/ "Samples")  
 Samples for testing out the basic functionality of the cluster based on the installations in the sections above.
 
