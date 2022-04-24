@@ -55,4 +55,4 @@ az k8s-extension create --name microsoft.azuredefender.kubernetes --cluster-type
 
 # Install the Open Service Mesh extension
 # More info: https://github.com/Azure/osm-azure
-az k8s-extension create --cluster-name $clusterName --resource-group $azureRGName --cluster-type connectedClusters --extension-type Microsoft.openservicemesh --scope cluster --release-train staging --name osm --version 1.0.0
+az k8s-extension create --cluster-name $clusterName --resource-group $azureRGName --cluster-type connectedClusters --extension-type Microsoft.openservicemesh --scope cluster --release-train stable --name osm --version 1.0.0-1
