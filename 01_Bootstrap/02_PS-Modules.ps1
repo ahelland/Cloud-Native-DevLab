@@ -12,9 +12,9 @@ exit
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # This installs the module for AKS HCI (preceded by its dependencies)
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4 -AcceptLicense
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0 -AcceptLicense
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128 -AcceptLicense
+Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.7.0 -AcceptLicense
+Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 4.4.0 -AcceptLicense
+Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.137 -AcceptLicense
 Install-Module -Name AksHci -Repository PSGallery -AcceptLicense
 
 # Modules need to be imported explicitly
@@ -40,7 +40,7 @@ git clone https://github.com/ahelland/Cloud-Native-DevLab.git
 # Close all PowerShell windows and reopen a new administrative session to check if you have the latest version of the PowerShell module.
 exit
 
-# Current version is 1.1.30 (April 2022 Release)
+# Current version is 1.1.38 (July 2022 Release)
 Get-Command -Module AksHci
 
 # Log in to Azure 
