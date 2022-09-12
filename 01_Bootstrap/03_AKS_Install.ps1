@@ -1,6 +1,6 @@
 # Adapt variables to your liking. Defaults provided.
 # Network settings are just placeholders and will most likely need to be adjusted.
-$k8sVersion             = "v1.22.6"
+$k8sVersion             = "v1.23.5"
 $clusterName            = "aks01"
 $vnetName               = "aksvnet"
 $vnetSwitch             = "LAN"
