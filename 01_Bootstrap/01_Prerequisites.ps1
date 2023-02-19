@@ -19,7 +19,7 @@ $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/
 
 # Download Helm
 # https://github.com/helm/helm/releases
-Invoke-WebRequest "https://get.helm.sh/helm-v3.6.3-windows-amd64.zip" -OutFile Helm.zip
+Invoke-WebRequest "https://get.helm.sh/helm-v3.11.0-windows-amd64.zip" -OutFile Helm.zip
 Expand-Archive -Path Helm.zip -DestinationPath .\
 # Helm will extract in a subdirectory; let's bring the executable to the tools directory.
 Copy-Item -Path .\windows-amd64\helm.exe $toolsPath
@@ -30,7 +30,7 @@ $envPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 [System.Environment]::SetEnvironmentVariable("PATH", $envPath + ";" + $gitPath + "\bin", "User")
 
 # Download and extract the portable version of Git into the tools directory
-Invoke-WebRequest "https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/PortableGit-2.33.0.2-32-bit.7z.exe" -OutFile git.exe
+Invoke-WebRequest "https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/PortableGit-2.39.1-32-bit.7z.exe" -OutFile git.exe
 .\git.exe -o $gitPath -y
 
 # The PowerShell prompt needs to be restarted for things to take effect.

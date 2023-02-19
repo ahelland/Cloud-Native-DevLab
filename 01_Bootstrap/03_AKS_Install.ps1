@@ -21,7 +21,7 @@ $azureRGName            = "AKS"
 
 ### aks01 ###
 $vnet = New-AksHciNetworkSetting -name $vnetName -vSwitchName $vnetSwitch -macPoolName $macPool -k8sNodeIpPoolStart $nodeIpPoolStart -k8sNodeIpPoolEnd $nodeIpPoolEnd -vipPoolStart $vipPoolStart -vipPoolEnd $vipPoolEnd -ipAddressPrefix $ipAddressPrefix -gateway $gateway -dnsServers $dnsServers
-Set-AksHciConfig -vnet $vnet -imageDir C:\ClusterStorage\Volume01\Images -cloudConfigLocation C:\ClusterStorage\Volume01\Config -workingDir C:\ClusterStorage\Volume01\ImageStore  -cloudservicecidr $cloudServiceCidr
+Set-AksHciConfig -vnet $vnet -imageDir C:\ClusterStorage\Volume01\Images -workingDir C:\ClusterStorage\Volume01\WorkDir -cloudConfigLocation C:\ClusterStorage\Volume01\Config -workingDir C:\ClusterStorage\Volume01\ImageStore  -cloudservicecidr $cloudServiceCidr
 Set-AksHciRegistration -subscriptionId $azureSubscriptionId -resourceGroupName $azureRGName
 
 # Install management cluster
@@ -42,7 +42,7 @@ Enable-AksHciArcConnection -name $clusterName
 Get-AksHciCluster -name $clusterName
 
 # Retrieve credentials to be used with kubectl
-Get-AksHciCredential -name $clusterName
+Get-AksHciCredential -name $clusterName -Confirm:$false
 
 # Enable Prometheus for monitoring
 Install-AksHciMonitoring -Name $clusterName -storageSizeGB 100 -retentionTimeHours 240
@@ -53,6 +53,7 @@ az config set extension.use_dynamic_install=yes_without_prompt
 # Install Azure Defender for AKS (note that this has a cost of roughly 2$ pr month pr core)
 az k8s-extension create --name microsoft.azuredefender.kubernetes --cluster-type connectedClusters --cluster-name $clusterName --resource-group $azureRGName --extension-type microsoft.azuredefender.kubernetes
 
-# Install the Open Service Mesh extension
-# More info: https://github.com/Azure/osm-azure
-az k8s-extension create --cluster-name $clusterName --resource-group $azureRGName --cluster-type connectedClusters --extension-type Microsoft.openservicemesh --scope cluster --name osm
+# Install the Azure Key Vault Secrets Provider extension
+# Note: extra steps to integrate with the actual vault
+# https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-akv-secrets-provider#provide-identity-to-access-azure-key-vault
+az k8s-extension create --cluster-name $clusterName --resource-group $azureRGName --cluster-type connectedClusters --extension-type Microsoft.AzureKeyVaultSecretsProvider --name akvsecretsprovider
