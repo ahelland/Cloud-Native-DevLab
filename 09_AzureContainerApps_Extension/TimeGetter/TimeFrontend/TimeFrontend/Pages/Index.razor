@@ -1,0 +1,36 @@
+﻿@page "/"
+@using Microsoft.Extensions.Configuration;
+@using System.Net.Http;
+@inject IConfiguration configuration;
+
+<PageTitle>ACA - Frontend</PageTitle>
+
+<h1>TimeGetter</h1>
+
+<p>
+    Current time: @now <br />
+</p>
+
+<button class="btn btn-primary" @onclick="GetTime">Get current time</button>
+
+@code {
+    private string now = string.Empty;
+
+    protected override Task OnInitializedAsync()
+    {        
+        return base.OnInitializedAsync();
+    }
+
+    private async void GetTime()
+    {
+        using (var client = new HttpClient())
+        {
+            var requestUrl = configuration.GetSection("API")["api_address"];
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
+            HttpResponseMessage response = client.SendAsync(request).Result;
+            var responseString = response.Content.ReadAsStringAsync().Result;
+
+            now = $"{responseString} - Http Status {response.StatusCode}";
+        }
+    }
+}

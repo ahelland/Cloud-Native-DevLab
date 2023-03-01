@@ -43,6 +43,9 @@ Explanation of Dapr plus installation commands. Links to more info and samples.
 - [08_Flux](/08_Flux/ "Flux")  
 Installation of a sample app using a GitOps approach with Flux.
 
+- [09_AzureContainerApps_Extension](/09_AzureContainerApps_Extension/ "Azure Container Apps")  
+Installation of the Azure Container Apps extension for AKS and deployment of a sample app on top. (Deployment with Azure CLI and/or Bicep.)
+
 - [Samples](/Samples/ "Samples")  
 Samples for testing out the basic functionality of the cluster based on the installations in the sections above.
 
