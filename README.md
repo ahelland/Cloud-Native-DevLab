@@ -9,6 +9,15 @@ In addition to a simple working AKS cluster there are also a number of extra fea
 This is based on Azure Stack HCI AKS:  
 [https://docs.microsoft.com/en-us/azure-stack/aks-hci/](https://docs.microsoft.com/en-us/azure-stack/aks-hci/)  
 
+## April 2024 - Deprecation Notice
+As of 2024 the installation instructions are not valid for newer versions of Azure Stack HCI.
+
+The initial versions of Azure Stack HCI (which this guide is based upon) relied on most of the work being done locally with a lightweight connection to Azure at the end.
+
+From Azure Stack HCI 23H2 the approach is reversed. There are some bootstrapping steps done locally and then the actual installation of the cluster is initiated and driven from Azure.
+
+This means that I will not be maintaining this repo in its current form. Kubernetes yaml and other components might work, but the main part is basically obsolete.
+
 ### Notes for this guide  
 -----------
 *  The focus is as much automation as possible. You will need to supply values specific to your environment, but apart from that as few wizards as possible is the goal.
