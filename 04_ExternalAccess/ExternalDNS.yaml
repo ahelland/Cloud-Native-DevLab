@@ -50,7 +50,7 @@ metadata:
 type: Opaque
 data:
   # Copy & paste from the output of install.ps1
-  azure.json: /* base64 */
+  azure.json: ${az-conf-json}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -71,7 +71,7 @@ spec:
       serviceAccountName: external-dns
       containers:
       - name: external-dns
-        image: k8s.gcr.io/external-dns/external-dns:v0.9.0
+        image: k8s.gcr.io/external-dns/external-dns:v0.13.1
         resources:
           requests:
             cpu: 10m
@@ -82,11 +82,12 @@ spec:
         args:
         - --source=service
         - --source=ingress
-        # Replace with your domain name
-        - --domain-filter= /* contoso.com */
+        # Replace with your domain name (like contoso.com)
+        - --domain-filter=${DOMAIN}
         - --provider=azure
-        # Resource group for the DNS Zone
-        - --azure-resource-group= /* rg-dns */
+        # Resource group for the DNS Zone (like rg-dns)
+        - --azure-resource-group=${DNS_RG}
+        - --txt-prefix=externaldns-        
         volumeMounts:
         - name: azure-config-file
           mountPath: /etc/kubernetes
@@ -94,4 +95,4 @@ spec:
       volumes:
       - name: azure-config-file
         secret:
-          secretName: azure-config-file      
+          secretName: azure-config-file

@@ -17,18 +17,18 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: /* EMAIL */
+    email: ${ACME_EMAIL}
     privateKeySecretRef:
       name: letsencrypt
     solvers:
     - dns01:
         azureDNS:
-          clientID: /* ClientId */
+          clientID: ${CLIENT_ID}
           clientSecretSecretRef:
             name: azure-dns-secret
             key: client-secret
           subscriptionID: /* "xxxx-xxx-xxx-xxx-xxxx" */
           tenantID: /* "xxxx-xxx-xxx-xxx-xxxx" */
-          resourceGroupName: /* azureDNSRG */
-          hostedZoneName: /* contoso.com */
+          resourceGroupName: ${DNS_RG}
+          hostedZoneName: ${DOMAIN}
           environment: AzurePublicCloud
